@@ -36,7 +36,8 @@ def showtasks(request, id):
 def tasks(request):
     # tasks = Task.objects.all()
     # tasks = Task.objects.filter(user=request.user)#that only belong to that user
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True) #that are also null in the completed field
+    # tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True) #that are also null in the completed field
+    tasks = Task.objects.filter(datecompleted__isnull=True) #that are also null in the completed field
     return render(request, 'tasks/tasks.html', {
         'tasks': tasks
     })
